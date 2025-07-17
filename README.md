@@ -79,8 +79,15 @@ Notebook	Jupyter
 
 📊 Sample Visuals
 
-    (Include screenshots of Power BI dashboards and EDA plots here)
-    Example:
+<p align="center">
+  <img src="Images/Flow-of-the-Program.png" alt="Program Flow" width="600">
+</p>
+
+<p align="center">
+  <img src="Images/Flow-of-the-Program.png" alt="Program Flow" width="600">
+</p>
+
+
 
 📈 Results
 
