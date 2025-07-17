@@ -79,12 +79,14 @@ Notebook	Jupyter
 
 📊 Sample Visuals
 
+Summary Page
 <p align="center">
-  <img src="Images/Flow-of-the-Program.png" alt="Program Flow" width="600">
+  <img src="Image/Summary Page.png" alt="Program Flow" width="600">
 </p>
 
+Prediction Page
 <p align="center">
-  <img src="Images/Flow-of-the-Program.png" alt="Program Flow" width="600">
+  <img src="Image/Prediction Page.png" alt="Program Flow" width="600">
 </p>
 
 
