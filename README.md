@@ -65,7 +65,7 @@ This solution covers:
 ### 0️⃣ Dataset Overview
 
 <p align="center">
-  <img src="Image/Customer Churn Data.png" alt="Dataset Overview" width="600">
+  <img src="Image/Customer Churn Data.jpg" alt="Dataset Overview" width="600">
 </p>
 
 **Dataset Columns Grouped Into:**
