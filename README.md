@@ -81,12 +81,12 @@ Notebook	Jupyter
 
 Summary Page
 <p align="center">
-  <img src="Image/Summary Page.png" alt="Program Flow" width="600">
+  <img src="Image/Summary_Page.png" alt="Program Flow" width="600">
 </p>
 
 Prediction Page
 <p align="center">
-  <img src="Image/Prediction Page.png" alt="Program Flow" width="600">
+  <img src="Image/Prediction_Page.png" alt="Program Flow" width="600">
 </p>
 
 
