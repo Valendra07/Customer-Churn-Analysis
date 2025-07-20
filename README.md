@@ -1,151 +1,177 @@
-# Customer-Churn-Analysis
 
-A complete end-to-end data science project to analyze customer churn data using SQL Server, Power BI and predict future churners using Machine Learning Model. This solution covers ETL in MS SQL Server, dashboarding in Power BI, exploratory data analysis using Python libraries and predictive modeling by implementing and choosing the best one among three models: 
-1. XGBClassifier
-2. Random Forest Classifier
-3. Decision Tree Classifier
+# 📦 Customer-Churn-Analysis
 
+A complete **end-to-end data science project** to analyze customer churn using **SQL Server**, **Power BI**, and **Machine Learning**.  
+This solution covers:
 
-🚀 Project Overview
+- **ETL** in **Microsoft SQL Server**
+- **Dashboarding** in **Power BI**
+- **Exploratory Data Analysis (EDA)** using Python
+- **Predictive Modeling** using:
+  1. **XGBoost Classifier**
+  2. **Random Forest Classifier**
+  3. **Decision Tree Classifier**
 
-Customer churn is a major concern in Telecom Industry. This project analyse the customer data to find key reasons leading to customer churn using Summary Report, predict future churners and then analyse the churner profile using Prediction report.
+---
 
-✅ Key Objectives:
+## 🚀 Project Overview
 
-Project Goals:
+**Customer churn** is a major concern in the **telecom industry**. This project analyzes churn patterns, identifies key drivers, predicts future churners, and profiles at-risk customers using:
 
-The primary objective is : 
-1. To Create an entire ETL (Extract, Transform, Load) process in a database & a Power BI dashboard to effectively utilize Customer Data and achieve the following: 
-Analyze Customer Data at below levels:
+- A **summary dashboard**
+- A **prediction report**
+- A trained **machine learning model**
 
-a. Demographic (e.g., age, gender)
-b. Geographic (e.g., state)
-c. Payment & Account Info (e.g., contract type, payment method, tenure)
-d. Services (e.g., internet service, phone service, streaming)
+---
 
-2. Study Churner Profile & Identify Areas for Implementing Marketing Campaigns (e.g., understanding reasons for churn and targeting at-risk customers).
+## ✅ Key Objectives
 
-3. Using ML Model to Predict Future Churners.
+### 🎯 Project Goals:
 
-Metrics Used:
-To measure the success and analyze churn, the following key metrics are essential: 
-Total Customers.
-Total Churn : Number of lost customers.
-Churn Rate : The percentage of customers who have left the Telecom Company Service.
-New Joiners : number of newly acquired customers.
- 
-🧰 Tech Stack
-Component	Tools & Libraries
-Database	: Microsoft SQL Server
-Data Analysis	Python (pandas, matplotlib, seaborn)
-Dashboarding	Power BI
-Machine Learning	scikit-learn
-Notebook Jupyter
+1. **Create an ETL process** and **Power BI dashboard** to analyze customer data across:
 
+   - **Demographics** (e.g., age, gender)  
+   - **Geography** (e.g., state)  
+   - **Payment & Account Info** (e.g., contract type, payment method, tenure)  
+   - **Subscribed Services** (e.g., internet, phone, streaming)
 
-🔄 Workflow
-0. Understanding the dataset:
-Here's the representation of dataset used in the project.
+2. **Profile churners** and identify focus areas for **marketing campaigns**.
+
+3. **Predict future churners** using a machine learning model.
+
+### 📊 Metrics Used:
+
+- **Total Customers**  
+- **Total Churn**: Number of customers lost  
+- **Churn Rate**: % of customers who left  
+- **New Joiners**: Recently acquired customers
+
+---
+
+## 🧰 Tech Stack
+
+| Component         | Tools & Libraries                                      |
+|------------------|--------------------------------------------------------|
+| **Database**      | Microsoft SQL Server                                   |
+| **Data Analysis** | Python (`pandas`, `matplotlib`, `seaborn`)             |
+| **Dashboarding**  | Power BI                                               |
+| **ML Modeling**   | `scikit-learn`, `xgboost`, `imbalanced-learn`, `pickle` |
+| **Notebook**      | Jupyter Notebook                                       |
+
+---
+
+## 🔄 Workflow
+
+### 0️⃣ Dataset Overview
 
 <p align="center">
-  <img src="Image/Customer Churn Data.png" alt="Program Flow" width="600">
+  <img src="Image/Customer Churn Data.png" alt="Dataset Overview" width="600">
 </p>
 
-The 31 columns can broadly classified into 6 major categories :
-   a. Cutomer ID : Unique Key
-   b. Personal Information 
-   c. Account Info
-   d. Services Subscribed by the customer
-   e. Revenue Related Columns 
-   f. Customer Status : Target Column
+**Dataset Columns Grouped Into:**
 
-1. ETL and Data Preparation (MS SQL Server)
-    a. Database and Table Creation
-    b. Removed duplicates and handled NULL values.
-    c. View Creation
+- **Customer ID** (unique key)  
+- **Personal Info** (gender, senior citizen, etc.)  
+- **Account Info** (contract type, tenure, etc.)  
+- **Service Subscriptions**  
+- **Revenue Data**  
+- **Customer Status** (Target column)
 
-    ETL Framework :
-   Data Source : CSV file containing data.
-  Microsoft server management Studio : To transform and load data in SQL server database using import Wizard
- SQL server database : To store data, tables and views.
+---
 
-3. Dashboarding (Power BI)
-    Loaded the data in power bi and used power query editor to create custom column called chain status and  monthly charged range.
-    Created Summary Page having following measures:
+### 1️⃣ ETL & Data Preparation — *SQL Server*
 
-      Total Customers = COUNT(Customer_Data[Customer_ID])
+- **Database & Table Creation**
+- **Removed Duplicates**
+- **Handled NULL Values**
+- **Created Views**
 
-      Total Churn = SUM(Customer_Data[Churn Status])
+**ETL Framework:**
 
-      New Joiner = CALCULATE(COUNT(Customer_Data[Customer_ID]),Customer_Data[Customer_Status]="Joined")
+- **Data Source:** CSV file  
+- **MS SQL Server Management Studio:** Import & Transform using Wizard  
+- **SQL Server DB:** Store data & create analytical views  
 
-      Churn Rate = [Total Churn]/[Total Customers]
+---
 
-    Prediction Page uses following measure:
+### 2️⃣ Dashboarding — *Power BI*
 
-      Count Predicted Churner = COUNT(Predictions[Customer_ID]) + 0
-                
-📊 Sample Visuals
+Used **Power Query Editor** to create new columns such as `Chain Status` and `Monthly Charge Range`.
 
-Summary Page
+#### 📍 Summary Page Measures:
+```DAX
+Total Customers = COUNT(Customer_Data[Customer_ID])
+
+Total Churn = SUM(Customer_Data[Churn Status])
+
+New Joiner = CALCULATE(COUNT(Customer_Data[Customer_ID]), Customer_Data[Customer_Status] = "Joined")
+
+Churn Rate = [Total Churn] / [Total Customers]
+```
+
+#### 📍 Prediction Page Measure:
+```DAX
+Count Predicted Churner = COUNT(Predictions[Customer_ID]) + 0
+```
+
+---
+
+## 📊 Sample Visuals
+
+### 📌 Summary Page
 <p align="center">
-  <img src="Image/Summary_Page.png" alt="Program Flow" width="600">
+  <img src="Image/Summary_Page.png" alt="Summary Page" width="600">
 </p>
 
-Prediction Page
+### 📌 Prediction Page
 <p align="center">
-  <img src="Image/Prediction_Page.png" alt="Program Flow" width="600">
+  <img src="Image/Prediction_Page.png" alt="Prediction Page" width="600">
 </p>
 
-Key Insights from Data Analysis (Summary Page)
+---
 
-    Senior Customers: Individuals aged above 60 years exhibit a notably higher churn rate compared to other age groups.
+## 🔍 Key Insights (from Summary Page)
 
-    Tenure-Based Churn: Customers with a tenure of less than 2 months are more likely to churn, in contrast to those with 1-year or 2-year commitments, who show significantly lower churn rates.
+- **Senior Customers** (age > 60) have a significantly higher churn rate.
+- **Short Tenure Churn**: Users with < 2 months tenure are more likely to churn. In contrast, users with **1-year or 2-year contracts** show much lower churn.
+- **Gender Disparity**: **Female customers churn more** than male customers.
+- **Service-Based Churn**: Users with **Phone, Internet, and Unlimited Data** services show **60%+ churn rate**.
 
-    Gender Disparity: Female customers demonstrate a higher churn rate compared to male customers.
+---
 
-    Service-Based Churn: Customers who have subscribed to Phone Services, Internet Service, and Unlimited Data plans exhibit a churn rate exceeding 60%.
+## 🧠 Machine Learning Module — *Churn Prediction*
 
-Machine Learning Module — Customer Churn Prediction
+This Jupyter notebook builds and evaluates ML models to **predict churn**, enabling targeted retention strategies.
 
-This Jupyter notebook focuses on predicting customer churn using various machine learning algorithms. It is a core component of the larger Customer Churn Analysis project.
-📌 Key Features
+### 📌 Key Features
 
-    Data Preprocessing:
+#### 🔧 Data Preprocessing:
+- Removed non-informative columns (e.g., `customerID`)
+- Handled missing values in `TotalCharges`
+- Encoded categorical variables using **LabelEncoder**
 
-        Removal of non-informative columns (e.g., customerID)
+#### ⚖️ Class Imbalance Handling:
+- Applied **SMOTE** (Synthetic Minority Oversampling Technique)
 
-        Handling of missing values in TotalCharges
+#### 🏗️ Model Building:
+- Implemented:
+  - **Decision Tree Classifier**
+  - **Random Forest Classifier**
+  - **XGBoost Classifier**
 
-        Label encoding of categorical variables.
+#### 📊 Model Evaluation:
+- **Accuracy Score**
+- **Confusion Matrix**
+- **Classification Report** *(Precision, Recall, F1-score)*
 
-    Class Imbalance Handling:
+#### 💾 Output:
+- Exported predictions to `.csv` for Power BI visualization
+- Saved trained model using `pickle` for future use
 
-        Applied SMOTE (Synthetic Minority Oversampling Technique) to balance churn classes
+---
 
-    Model Building:
+## 📈 Results
 
-        Implemented and compared:
-
-            Decision Tree Classifier
-
-            Random Forest Classifier
-
-            XGBoost Classifier
-
-    Model Evaluation:
-
-        Accuracy Score
-
-        Confusion Matrix
-
-        Classification Report (Precision, Recall, F1-Score)
-
-   Saved the csv file of predicted churners for analysis in Power BI.
-
-📈 Results
-
-    Built a predictive model pipeline ready for deployment
-
-    Delivered insights that can inform customer retention strategies.
+- Built a robust **ML pipeline ready for deployment**
+- Delivered actionable **churn insights**
+- Provided data-driven inputs for **retention strategies**
